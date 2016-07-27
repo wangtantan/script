@@ -1,19 +1,19 @@
 #!/bin/bash -xv
 
-host=mongo
 toRoot=/data/redis
+formatDate=$(date +%F)
 
-cd $toRoot && /usr/local/bin/redis-cli -h mongo --rdb dump.rdb.$(date +%F) ||  exit 1
-echo "dump redis dataBase success: dump.rdb.$(date +%F)"
+echo "$(date +'[ %F %H:%M:%S ]') start sync redis data"
+cd $toRoot && /usr/local/bin/redis-cli -h mongo --rdb dump.rdb.$formatDate ||  exit 1
+echo "dump redis dataBase success: dump.rdb.$formatDate"
 
-systemctl stop redis && systemctl is-active redis && exit 2
+systemctl stop redis && systemctl is-active redis &> /dev/null && exit 2
 echo "redis is stopped with success"
 
-[ -s "dump.rdb" ] && cp dump.rdb dump.rdb.bak
-cp dump.rdb.$(date +%F) dump.rdb || exit 3
+[ -s "dump.rdb" ] && mv dump.rdb{,.bak}
+cp dump.rdb{.$formatDate,} || exit 3
 echo "copy dump.rdb with success"
 
 systemctl start redis || exit 4
 echo "sync rdb and restart with success"
 exit 0
-
