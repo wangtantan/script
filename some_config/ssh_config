@@ -1,0 +1,114 @@
+ServerAliveInterval 60
+
+Host bitbucket.org
+    Hostname bitbucket.org
+    User git
+    IdentityFile ~/.ssh/bitbucket.pem
+
+Host github.com
+    Hostname github.com
+    User git
+    IdentityFile ~/.ssh/github.pem
+
+Host aws
+  Hostname 52.69.198.217
+  User ubuntu
+  IdentityFile ~/.ssh/UBUNTU_AWS.pem
+#  ProxyCommand /usr/bin/nc -x 127.0.0.1:1080 %h %p
+
+Host wind
+  Hostname 121.201.28.101
+  User ubuntu
+  IdentityFile ~/.ssh/Wind_qingcloud.pem
+
+Host media
+  Hostname 121.201.14.43
+  User ubuntu
+  IdentityFile ~/.ssh/Wind_qingcloud.pem
+
+Host windr
+  Hostname 121.201.28.101
+  User root
+  IdentityFile ~/.ssh/Wind_qingcloud.pem
+
+Host wtt
+  Hostname 121.201.28.101
+  User wtt
+  IdentityFile ~/.ssh/TT_DuDu_MBP
+
+Host ddx
+  Hostname 121.43.120.207
+  User root
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+Host 29
+  Hostname 192.168.1.29
+  User hacker
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+Host noder
+  Hostname 120.55.92.192
+  User root
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+Host node
+  Hostname 120.55.92.192
+  User centos
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+Host node2
+  Hostname 121.41.45.77
+  User centos
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+Host mongo
+  Hostname 120.55.87.138
+  User centos
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+Host tunnel
+  HostName 121.201.28.101
+  User ubuntu
+  IdentityFile ~/.ssh/Wind_qingcloud.pem
+  LocalForward 27018 127.0.0.1:27018
+
+Host dev
+  Hostname 120.26.65.228
+  User centos
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+Host devr
+  Hostname 120.26.65.228
+  User root
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+Host home
+  Hostname 192.168.100.108
+  User lutao
+  IdentityFile ~/.ssh/self.pem
+
+Host ehome
+  Hostname 42.196.120.215
+  User centos
+  Port 62222
+  IdentityFile ~/.ssh/self.pem
+
+Host pay
+  Hostname 112.124.114.35
+  User centos
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+Host bak
+  Hostname 124.42.118.148
+  User centos
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+Host local
+  Hostname 127.0.0.1
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+#ssh -i ~/.ssh/TT_DDX_MacMini centos@120.26.142.146
+Host zabbix
+  Hostname 120.26.142.146
+  User centos
+  IdentityFile ~/.ssh/TT_DDX_MacMini

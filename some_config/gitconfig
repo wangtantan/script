@@ -1,0 +1,40 @@
+[color]
+	ui = auto
+[user]
+	email = lutaoact@hotmail.com
+	name = lutaoact
+[push]
+	default = current
+[core]
+	excludesfile = /Users/lutao/.gitignore_global
+	editor = vim
+	autocrlf = false
+	quotepath = false
+	ignorecase = false
+#	whitespace = cr-at-eol
+[credential]
+	helper = osxkeychain
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[merge]
+	tool = vimdiff
+[gui]
+	encoding = utf-8
+[i18n]
+	commitEncoding = utf-8
+	logOutputEncoding = utf-8
+[alias]
+	s = status
+	br = branch
+	ss = status
+	ds = diff --staged
+	d = diff
+	co = checkout
+	ps = push
+	pl = pull
+	au = add -u
+	cam = commit -a -m
+[http]
+	proxy = 127.0.0.1:8123
