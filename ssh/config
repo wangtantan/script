@@ -1,0 +1,25 @@
+Host bitbucket.org
+  Hostname bitbucket.org
+  User git
+  IdentityFile ~/.ssh/bitbucket.pem
+
+Host mongo
+  Hostname 10.117.199.79
+  User centos
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+Host mongoB
+  Hostname 10.132.33.63
+  User centos
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+Host mongoD
+  Hostname 10.117.213.33
+  User centos
+  IdentityFile ~/.ssh/TT_DDX_MacMini
+
+Host mini
+  Hostname 127.0.0.1
+  Port 2222
+  User lutao
+  IdentityFile ~/.ssh/node.pem
