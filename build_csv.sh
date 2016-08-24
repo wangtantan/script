@@ -1,8 +1,8 @@
 #!/bin/bash
 
 cd ~/node-server
+timeTable=(20130101 20140101)
 
-timeTable=(20160818 20160819)
 for ((i=0; i<1; i++))
 do
 #echo ${timeTable[$i]} ${timeTable[$[$i+1]]}
