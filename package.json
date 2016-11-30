@@ -1,5 +1,5 @@
 {
-  "name": "node-server",
+  "name": "script",
   "version": "0.0.1",
   "description": "node server based on express + mongodb + redis",
   "main": "app.js",
