@@ -4,8 +4,8 @@ const async = require('async');
 const csv = require('csv');
 const fs = require('fs');
 
-let startLineNum = 2;
-let files = ['CCKJRSLQ70', 'CCKJRSLQ75', 'CCKJRSLQ79'];
+let startLineNum = 1;
+let files = ['ALZAYL_A', 'ALZAYL_B', 'ALZAYL_C'];
 
 for (let file of files) {
     run(file);
@@ -24,7 +24,7 @@ function run(file) {
             });
         },
         write: (_cb, ret) => {
-            //console.log(ret.csv);
+            console.log(ret.csv);
             fs.writeFile(`./data/${file}_pak.txt`, packageStr(ret.csv), 'utf-8', _cb);
         },
     }, (err, ret) => {
@@ -52,17 +52,17 @@ function reverse(arr) {
     let len = arr.length;
     let rsvArr = [];
     if (len <= 3) return rsvArr;
-    for (let i = startLineNum; i < len; i += 2) {
+    for (let i = startLineNum; i < len; i++) {
         rsvArr.push(arr[i][0].split(';'));
     }
     return rsvArr;
 }
 
 //console.log(buildStr(1, 2, 3, '4') + buildStr(1, 2, 3, '4'));
-function buildStr(gender, code, age, premium) {
+function buildStr(socialFlag, age, premium) {
     if (premium === '') return '';
-    premium = parseFloat(premium).toFixed(1);
-    return `\"gender_${gender}|chargeCode_${code}|age_${age}\": \"${premium}\",\n`;
+    premium = parseFloat(premium).toFixed(2);
+    return `\"socialFlag_${socialFlag}|age_${age}\": \"${premium}\",\n`;
 }
 
 //console.log(buildStr(getGender(2, 5), 1, 1, 2));
@@ -72,14 +72,14 @@ function packageStr(arr) {
     let str = '';
     for (let w = 1; w < wd; w++) {
         for (let h = 1; h < ht; h++) {
-            str += buildStr(getGender(w, wd), arr[0][w], arr[h][0], arr[h][w]);
+            str += buildStr(getSocialInfo(w, wd), arr[h][0], arr[h][w]);
         }
         str += '\n';
     }
     return str;
 }
 
-function getGender(num, width) {//1: male, 2: famale
+function getSocialInfo(num, width) {
    if (num < width/2) return 1;
-   return 2;
+   return 0;
 }
