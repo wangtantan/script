@@ -1,0 +1,14 @@
+"planCode_A|age_18-35|jobType_1-2": "320.00",
+"planCode_A|age_18-35|jobType_3-4": "580.00",
+"planCode_A|age_36-45|jobType_1-2": "490.00",
+"planCode_A|age_36-45|jobType_3-4": "720.00",
+"planCode_A|age_46-55|jobType_1-2": "780.00",
+"planCode_A|age_46-55|jobType_3-4": "980.00",
+
+"planCode_B|age_18-35|jobType_1-2": "700.00",
+"planCode_B|age_18-35|jobType_3-4": "1480.00",
+"planCode_B|age_36-45|jobType_1-2": "1080.00",
+"planCode_B|age_36-45|jobType_3-4": "1800.00",
+"planCode_B|age_46-55|jobType_1-2": "1480.00",
+"planCode_B|age_46-55|jobType_3-4": "2180.00",
+

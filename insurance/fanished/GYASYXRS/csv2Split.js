@@ -4,12 +4,13 @@ const async = require('async');
 const csv = require('csv');
 const fs = require('fs');
 
-let startLineNum = 2;
-let files = ['GYASFJHMBFZDJBBX'];
+let startLineNum = 0;
+let files = ['GYASYXRS'];
 
 for (let file of files) {
     run(file);
 }
+
 
 function run(file) {
     mySeries({
@@ -19,16 +20,18 @@ function run(file) {
         csv: (_cb, ret) => {
             csv.parse(ret.data, (err, arr) => {
                 if (err) return _cb(err);
-                _cb(null, reverse(arr));
+                //console.log(arr);
+                //process.exit(0);
+                _cb(null, arr);
             });
         },
         write: (_cb, ret) => {
             //console.log(ret.csv);
+            console.log(packageStr(ret.csv));
             fs.writeFile(`./data/${file}_pak.txt`, packageStr(ret.csv), 'utf-8', _cb);
         },
     }, (err, ret) => {
         if (err) return console.log(err);
-        //console.log(packageStr(ret.csv));
         console.log(`finash ${file}`);
     });
 }
@@ -51,7 +54,7 @@ function reverse(arr) {
     let len = arr.length;
     let rsvArr = [];
     if (len <= 3) return rsvArr;
-    for (let i = startLineNum; i < len; i += 2) {
+    for (let i = startLineNum; i < len; i++) {
         rsvArr.push(arr[i][0].split(';'));
     }
     return rsvArr;
@@ -70,8 +73,8 @@ function packageStr(arr) {
         wd = arr[0].length;
     let str = '';
     for (let w = 1; w < wd; w++) {
-        for (let h = 4; h < ht; h++) {
-            str += buildStr(arr[2][w], arr[3][w], arr[h][0], arr[h][w]);
+        for (let h = 2; h < ht; h++) {
+            str += buildStr(arr[0][w], arr[1][w], arr[h][0], arr[h][w]);
         }
         str += '\n';
     }

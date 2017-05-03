@@ -1,0 +1,15 @@
+"planCode_A|termCode_3d": "9.00",
+"planCode_A|termCode_5d": "15.00",
+"planCode_A|termCode_7d": "21.00",
+"planCode_A|termCode_15d": "40.00",
+
+"planCode_B|termCode_3d": "15.00",
+"planCode_B|termCode_5d": "25.00",
+"planCode_B|termCode_7d": "35.00",
+"planCode_B|termCode_15d": "70.00",
+
+"planCode_C|termCode_3d": "21.00",
+"planCode_C|termCode_5d": "35.00",
+"planCode_C|termCode_7d": "48.00",
+"planCode_C|termCode_15d": "100.00",
+

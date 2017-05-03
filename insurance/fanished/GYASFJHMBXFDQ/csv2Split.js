@@ -5,7 +5,7 @@ const csv = require('csv');
 const fs = require('fs');
 
 let startLineNum = 2;
-let files = ['GYASFJHMBFZDJBBX'];
+let files = ['GYASFJHMBXFDQ1', 'GYASFJHMBXFDQ2'];
 
 for (let file of files) {
     run(file);
@@ -19,7 +19,7 @@ function run(file) {
         csv: (_cb, ret) => {
             csv.parse(ret.data, (err, arr) => {
                 if (err) return _cb(err);
-                _cb(null, reverse(arr));
+                _cb(null, arr);
             });
         },
         write: (_cb, ret) => {
@@ -70,8 +70,8 @@ function packageStr(arr) {
         wd = arr[0].length;
     let str = '';
     for (let w = 1; w < wd; w++) {
-        for (let h = 4; h < ht; h++) {
-            str += buildStr(arr[2][w], arr[3][w], arr[h][0], arr[h][w]);
+        for (let h = 5; h < ht; h++) {
+            str += buildStr(arr[3][w], arr[4][w], arr[h][0], arr[h][w]);
         }
         str += '\n';
     }

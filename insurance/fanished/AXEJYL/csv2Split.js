@@ -5,11 +5,12 @@ const csv = require('csv');
 const fs = require('fs');
 
 let startLineNum = 2;
-let files = ['GYASFJHMBFZDJBBX'];
+let files = ['AXEJYL'];
 
 for (let file of files) {
     run(file);
 }
+
 
 function run(file) {
     mySeries({
@@ -19,7 +20,8 @@ function run(file) {
         csv: (_cb, ret) => {
             csv.parse(ret.data, (err, arr) => {
                 if (err) return _cb(err);
-                _cb(null, reverse(arr));
+                _cb(null, arr);
+                //_cb(null, reverse(arr));
             });
         },
         write: (_cb, ret) => {
@@ -28,7 +30,6 @@ function run(file) {
         },
     }, (err, ret) => {
         if (err) return console.log(err);
-        //console.log(packageStr(ret.csv));
         console.log(`finash ${file}`);
     });
 }
@@ -58,10 +59,10 @@ function reverse(arr) {
 }
 
 //console.log(buildStr(1, 2, 3, '4') + buildStr(1, 2, 3, '4'));
-function buildStr(gender, code, age, premium) {
+function buildStr(code, age, premium) {
     if (premium === '') return '';
     premium = parseFloat(premium).toFixed(2);
-    return `\"gender_${gender}|chargeCode_${code}|age_${age}\": \"${premium}\",\n`;
+    return `\"socialSecurity_${code}|age_${age}\": \"${premium}\",\n`;
 }
 
 //console.log(buildStr(getGender(2, 5), 1, 1, 2));
@@ -70,8 +71,8 @@ function packageStr(arr) {
         wd = arr[0].length;
     let str = '';
     for (let w = 1; w < wd; w++) {
-        for (let h = 4; h < ht; h++) {
-            str += buildStr(arr[2][w], arr[3][w], arr[h][0], arr[h][w]);
+        for (let h = 1; h < ht; h++) {
+            str += buildStr(arr[0][w], arr[h][0], arr[h][w]);
         }
         str += '\n';
     }
@@ -81,4 +82,9 @@ function packageStr(arr) {
 function getGender(num, width) {//1: male, 2: famale
    if (num < width/2) return 1;
    return 2;
+}
+
+function stop(something) {
+    console.log(something);
+    process.exit(0);
 }

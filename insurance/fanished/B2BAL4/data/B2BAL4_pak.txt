@@ -1,0 +1,21 @@
+"planCode_A|termCode_5d": "50.00",
+"planCode_A|termCode_7d": "65.00",
+"planCode_A|termCode_10d": "100.00",
+"planCode_A|termCode_14d": "150.00",
+"planCode_A|termCode_17d": "210.00",
+"planCode_A|termCode_more": "15.00",
+
+"planCode_B|termCode_5d": "85.00",
+"planCode_B|termCode_7d": "125.00",
+"planCode_B|termCode_10d": "175.00",
+"planCode_B|termCode_14d": "235.00",
+"planCode_B|termCode_17d": "310.00",
+"planCode_B|termCode_more": "20.00",
+
+"planCode_C|termCode_5d": "160.00",
+"planCode_C|termCode_7d": "220.00",
+"planCode_C|termCode_10d": "320.00",
+"planCode_C|termCode_14d": "430.00",
+"planCode_C|termCode_17d": "550.00",
+"planCode_C|termCode_more": "35.00",
+

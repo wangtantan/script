@@ -5,7 +5,7 @@ const csv = require('csv');
 const fs = require('fs');
 
 let startLineNum = 2;
-let files = ['GYASFJHMBFZDJBBX'];
+let files = ['GYASFJZYJTYLBX'];
 
 for (let file of files) {
     run(file);
@@ -19,7 +19,7 @@ function run(file) {
         csv: (_cb, ret) => {
             csv.parse(ret.data, (err, arr) => {
                 if (err) return _cb(err);
-                _cb(null, reverse(arr));
+                _cb(null, arr);
             });
         },
         write: (_cb, ret) => {
@@ -58,10 +58,10 @@ function reverse(arr) {
 }
 
 //console.log(buildStr(1, 2, 3, '4') + buildStr(1, 2, 3, '4'));
-function buildStr(gender, code, age, premium) {
+function buildStr(gender, age, premium) {
     if (premium === '') return '';
     premium = parseFloat(premium).toFixed(2);
-    return `\"gender_${gender}|chargeCode_${code}|age_${age}\": \"${premium}\",\n`;
+    return `\"gender_${gender}|age_${age}\": \"${premium}\",\n`;
 }
 
 //console.log(buildStr(getGender(2, 5), 1, 1, 2));
@@ -71,7 +71,7 @@ function packageStr(arr) {
     let str = '';
     for (let w = 1; w < wd; w++) {
         for (let h = 4; h < ht; h++) {
-            str += buildStr(arr[2][w], arr[3][w], arr[h][0], arr[h][w]);
+            str += buildStr(arr[3][w], arr[h][0], arr[h][w]);
         }
         str += '\n';
     }
