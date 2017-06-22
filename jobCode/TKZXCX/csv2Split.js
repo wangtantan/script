@@ -5,7 +5,7 @@ const csv = require('csv');
 const fs = require('fs');
 const iconv = require('iconv-lite')
 
-let files = ['GYASjob'];
+let files = ['TKZXCXjob'];
 //getNewJobArr([, , null, "rr" ,"r", ]);
 for (let file of files) {
     run(file);
@@ -21,13 +21,14 @@ function run(file) {
             console.log("=====================");
             csv.parse(iconv.decode(ret.data, 'gb2312'), (err, arr) => {
                 if (err) return _cb(err);
-                let newArr = arr.map((jobArr) => {
-                    let newJobArr = getNewJobArr(jobArr);
-                    return newJobArr;
-                });
-                console.log(newArr);
+                //let newArr = arr.map((jobArr) => {
+                //    let newJobArr = getNewJobArr(jobArr);
+                //    return newJobArr;
+                //});
+                //console.log(newArr);
+                console.log(arr);
                 //process.exit(0);
-                _cb(null, newArr);
+                _cb(null, arr);
             });
         },
         write: (_cb, ret) => {
@@ -73,22 +74,22 @@ function packageStr(arr) {
         counter2nd = 0;
     let type1st,
         type2nd;
-    for (let i = 2; i < arr.length; i++) {
+    for (let i = 3; i < arr.length; i++) {
         console.log({i, arr: arr[i]});
         if (arr[i][0]) {
             counter1st++;
             type1st = arr[i][0];
             careerArray.push({//create 1st level code
-                text: type1st,
-                code: formatCode(counter1st),
+                text: type1st.substr(3),
+                code: type1st.substr(0, 3),
                 children: []
             });
             if (arr[i][1]) {
                 counter2nd = 0;
                 type2nd = arr[i][1];
                 careerArray[counter1st].children.push({//create 2nd level code
-                    text: type2nd,
-                    code: formatCode(counter1st) + formatCode(counter2nd),
+                    text: arr[i][2],
+                    code: type2nd,
                     children: []
                 });
             }
@@ -97,17 +98,17 @@ function packageStr(arr) {
                 counter2nd++;
                 type2nd = arr[i][1];
                 careerArray[counter1st].children.push({//create 2nd level code
-                    text: type2nd,
-                    code: formatCode(counter1st) + formatCode(counter2nd),
+                    text: arr[i][2],
+                    code: type2nd,
                     children: []
                 });
             }
         }
-        if (arr[i][2] && arr[i][3]) {
+        if (arr[i][4] && arr[i][3]) {
             careerArray[counter1st].children[counter2nd].children.push({
-                text: arr[i][2],
-                code: arr[i][3].length == 6 ? "0" + arr[i][3] : arr[i][3],
-                lvl: arr[i][4],//意外险arr[i][4]，人寿险arr[i][5]
+                text: arr[i][4],
+                code: arr[i][3],
+                lvl: arr[i][5],
             });
         }
     }

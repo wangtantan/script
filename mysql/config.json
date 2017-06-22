@@ -1,0 +1,16 @@
+{
+    "test": {
+        "connectionLimit": 10,
+        "host": "rm-bp13j3lm17py20755i.mysql.rds.aliyuncs.com",
+        "user": "pay_user",
+        "password": "huibaopay@1qaz2wsx",
+        "database": "huibao_pay"
+    },
+    "local": {
+        "connectionLimit": 10,
+        "host": "localhost",
+        "user": "root",
+        "password": "",
+        "database": "tantan"
+    }
+}
